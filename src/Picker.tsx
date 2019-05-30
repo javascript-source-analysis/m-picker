@@ -142,15 +142,15 @@ class Picker extends React.Component<IPickerProp & IPickerProps, any> {
 
     // 手机（touch）兼容 PC（mouse）
     return {
-      touchstart: (evt: React.TouchEvent<HTMLDivElement>) => onStart(evt.touches[0].screenY),
-      mousedown: (evt: React.MouseEvent<HTMLDivElement>) => onStart(evt.screenY),
+      touchstart: (evt: React.TouchEvent<HTMLDivElement>) => onStart(evt.touches[0].pageY),
+      mousedown: (evt: React.MouseEvent<HTMLDivElement>) => onStart(evt.pageY),
       touchmove: (evt: React.TouchEvent<HTMLDivElement>) => {
         evt.preventDefault();
-        onMove(evt.touches[0].screenY);
+        onMove(evt.touches[0].pageY);
       },
       mousemove: (evt: React.MouseEvent<HTMLDivElement>) => {
         evt.preventDefault();
-        onMove(evt.screenY);
+        onMove(evt.pageY);
       },
       touchend: () => onFinish(),
       touchcancel: () => onFinish(),
